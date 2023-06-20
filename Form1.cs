@@ -4,17 +4,17 @@ namespace Practice
 {
     public partial class Form1 : Form
     {
-        string currentState; // Ñîñòîÿíèå ÄÊÀ 
-        DeterministicFSM dFSM; // ÄÊÀ
+        string currentState; // Состояние ДКА
+        DeterministicFSM dFSM; // ДКА
 
         public Form1()
         {
             InitializeComponent();
             addRows();
 
-            var Q = new List<string> { "H", "A", "B", "C", "D", "S1", "S2", "S3", "S4" }; // âñå ñîñòîÿíèÿ
-            var Sigma = new List<char> { '0', '1' }; // àëôàâèò
-            var Delta = new List<Transition>{ // ïåðåõîäû
+            var Q = new List<string> { "H", "A", "B", "C", "D", "S1", "S2", "S3", "S4" }; // все состояния
+            var Sigma = new List<char> { '0', '1' }; // алфавит
+            var Delta = new List<Transition>{ // переходы
             new Transition("H", '0', "A"),
             new Transition("A", '0', "B"),
             new Transition("B", '0', "C"),
@@ -34,20 +34,20 @@ namespace Practice
             new Transition("S3", '1', "S4"),
             new Transition("S4", '1', "D"),
          };
-            var Q0 = "H"; // íà÷àëüíîå ñîñòîÿíèå
-            var F = new List<string> { "S1", "S2", "S3", "S4" }; // êîíå÷íûå ñîñòîÿíèÿ
+            var Q0 = "H"; // начальное состояние
+            var F = new List<string> { "S1", "S2", "S3", "S4" }; // конечные состояния
 
-            dFSM = new DeterministicFSM(Q, Sigma, Delta, Q0, F); // ÄÊÀ
+            dFSM = new DeterministicFSM(Q, Sigma, Delta, Q0, F); // ДКА
 
             currentState = Q0;
-            textBox2.Text = $"Íà÷àëüíîå ñîñòîÿíèå: {currentState}.";
+            textBox2.Text = $"Начальное состояние: {currentState}.";
             panel2.BackColor = SystemColors.ControlDark;
 
             clearColor(); 
             timer1.Start();
         }
 
-        // Çàïîëíåíèå òàáëèöû
+        // Заполнение таблицы
         private void addRows()
         {
             dataGridView1.Rows.Add("H", "A", "A", "0");
@@ -61,7 +61,7 @@ namespace Practice
             dataGridView1.Rows.Add("S4", "S1", "D", "1");
         }
 
-        // Ðàçðåøàòü ââîä òîëüêî 1 è 0. Îáðàáîò÷èê íàæàòèÿ Enter.
+        // Разрешать ввод только 1 и 0. Обработчик нажатия Enter.
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -85,24 +85,24 @@ namespace Practice
             }
             catch (Exception ex)
             {
-                textBox2.Text = "Îøèáêà! Â öåïî÷êå îáíàðóæåíû ñèìâîëû íå èç âõîäíîãî àëôàâèòà.";
+                textBox2.Text = "Ошибка! В цепочке обнаружены символы не из входного алфавита.";
                 panel2.BackColor = Color.Black;
                 currentState = String.Empty;
                 return;
             }
             if (string.IsNullOrEmpty(textBox1.Text))
             {
-                textBox2.Text = $"Íà÷àëüíîå ñîñòîÿíèå: {currentState}.";
+                textBox2.Text = $"Начальное состояние: {currentState}.";
                 panel2.BackColor = SystemColors.ControlDark;
             }
             else if (dFSM.Contains(currentState))
             {
-                textBox2.Text = $"Äîïóñêàþùåå ñîñòîÿíèå: {currentState}.";
+                textBox2.Text = $"Допускающее состояние: {currentState}.";
                 panel2.BackColor = Color.SeaGreen;
             }
             else
             {
-                textBox2.Text = $"Íåäîïóñêàþùåå ñîñòîÿíèå: {currentState}.";
+                textBox2.Text = $"Недопускающее состояние: {currentState}.";
                 panel2.BackColor = Color.IndianRed;
             }
             // timer1.Start();
@@ -126,7 +126,7 @@ namespace Practice
             }
         }
 
-        // Èçìåíåíèå öâåòà âñåõ ñòðîê â òàáëèöå íà îáû÷íûé
+        // Изменение цвета всех строк в таблице на обычный
         private void clearColor()
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
