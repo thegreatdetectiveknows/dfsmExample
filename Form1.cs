@@ -4,17 +4,17 @@ namespace Practice
 {
     public partial class Form1 : Form
     {
-        string currentState; // Состояние ДКА
-        DeterministicFSM dFSM; // ДКА
+        string currentState; // Г‘Г®Г±ГІГ®ГїГ­ГЁГҐ Г„ГЉГЂ 
+        DeterministicFSM dFSM; // Г„ГЉГЂ
 
         public Form1()
         {
             InitializeComponent();
             addRows();
 
-            var Q = new List<string> { "H", "A", "B", "C", "D", "S1", "S2", "S3", "S4" }; // все состояния
-            var Sigma = new List<char> { '0', '1' }; // алфавит
-            var Delta = new List<Transition>{ // переходы
+            var Q = new List<string> { "H", "A", "B", "C", "D", "S1", "S2", "S3", "S4" }; // ГўГ±ГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГї
+            var Sigma = new List<char> { '0', '1' }; // Г Г«ГґГ ГўГЁГІ
+            var Delta = new List<Transition>{ // ГЇГҐГ°ГҐГµГ®Г¤Г»
             new Transition("H", '0', "A"),
             new Transition("A", '0', "B"),
             new Transition("B", '0', "C"),
@@ -34,20 +34,20 @@ namespace Practice
             new Transition("S3", '1', "S4"),
             new Transition("S4", '1', "D"),
          };
-            var Q0 = "H"; // начальное состояние
-            var F = new List<string> { "S1", "S2", "S3", "S4" }; // конечные состояния
+            var Q0 = "H"; // Г­Г Г·Г Г«ГјГ­Г®ГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ
+            var F = new List<string> { "S1", "S2", "S3", "S4" }; // ГЄГ®Г­ГҐГ·Г­Г»ГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГї
 
-            dFSM = new DeterministicFSM(Q, Sigma, Delta, Q0, F); // ДКА
+            dFSM = new DeterministicFSM(Q, Sigma, Delta, Q0, F); // Г„ГЉГЂ
 
             currentState = Q0;
-            textBox2.Text = $"Начальное состояние: {currentState}.";
+            textBox2.Text = $"ГЌГ Г·Г Г«ГјГ­Г®ГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ: {currentState}.";
             panel2.BackColor = SystemColors.ControlDark;
 
             clearColor(); 
             timer1.Start();
         }
 
-        // Заполнение таблицы
+        // Г‡Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ ГІГ ГЎГ«ГЁГ¶Г»
         private void addRows()
         {
             dataGridView1.Rows.Add("H", "A", "A", "0");
@@ -61,7 +61,7 @@ namespace Practice
             dataGridView1.Rows.Add("S4", "S1", "D", "1");
         }
 
-        // Разрешать ввод только 1 и 0. Обработчик нажатия Enter.
+        // ГђГ Г§Г°ГҐГёГ ГІГј ГўГўГ®Г¤ ГІГ®Г«ГјГЄГ® 1 ГЁ 0. ГЋГЎГ°Г ГЎГ®ГІГ·ГЁГЄ Г­Г Г¦Г ГІГЁГї Enter.
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -85,24 +85,24 @@ namespace Practice
             }
             catch (Exception ex)
             {
-                textBox2.Text = "Ошибка! В цепочке обнаружены символы не из входного алфавита.";
+                textBox2.Text = "ГЋГёГЁГЎГЄГ ! Г‚ Г¶ГҐГЇГ®Г·ГЄГҐ Г®ГЎГ­Г Г°ГіГ¦ГҐГ­Г» Г±ГЁГ¬ГўГ®Г«Г» Г­ГҐ ГЁГ§ ГўГµГ®Г¤Г­Г®ГЈГ® Г Г«ГґГ ГўГЁГІГ .";
                 panel2.BackColor = Color.Black;
                 currentState = String.Empty;
                 return;
             }
             if (string.IsNullOrEmpty(textBox1.Text))
             {
-                textBox2.Text = $"Начальное состояние: {currentState}.";
+                textBox2.Text = $"ГЌГ Г·Г Г«ГјГ­Г®ГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ: {currentState}.";
                 panel2.BackColor = SystemColors.ControlDark;
             }
             else if (dFSM.Contains(currentState))
             {
-                textBox2.Text = $"Допускающее состояние: {currentState}.";
+                textBox2.Text = $"Г„Г®ГЇГіГ±ГЄГ ГѕГ№ГҐГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ: {currentState}.";
                 panel2.BackColor = Color.SeaGreen;
             }
             else
             {
-                textBox2.Text = $"Недопускающее состояние: {currentState}.";
+                textBox2.Text = $"ГЌГҐГ¤Г®ГЇГіГ±ГЄГ ГѕГ№ГҐГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ: {currentState}.";
                 panel2.BackColor = Color.IndianRed;
             }
             // timer1.Start();
@@ -126,7 +126,7 @@ namespace Practice
             }
         }
 
-        // Изменение цвета всех строк в таблице на обычный
+        // Г€Г§Г¬ГҐГ­ГҐГ­ГЁГҐ Г¶ГўГҐГІГ  ГўГ±ГҐГµ Г±ГІГ°Г®ГЄ Гў ГІГ ГЎГ«ГЁГ¶ГҐ Г­Г  Г®ГЎГ»Г·Г­Г»Г©
         private void clearColor()
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
