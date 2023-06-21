@@ -43,7 +43,7 @@ namespace Practice
             textBox2.Text = $"Начальное состояние: {currentState}.";
             panel2.BackColor = SystemColors.ControlDark;
 
-            clearColor(); 
+            clearColor();
             timer1.Start();
         }
 

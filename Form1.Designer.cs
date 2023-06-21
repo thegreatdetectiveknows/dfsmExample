@@ -53,10 +53,11 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(1, 20);
+            textBox1.Location = new Point(1, 12);
+            textBox1.Margin = new Padding(2);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "Поле для ввода цепочки";
-            textBox1.Size = new Size(603, 31);
+            textBox1.Size = new Size(427, 23);
             textBox1.TabIndex = 0;
             textBox1.KeyPress += textBox1_KeyPress;
             // 
@@ -66,15 +67,19 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
-            dataGridView1.Location = new Point(6, 30);
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(2, 18);
+            dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.RowTemplate.Height = 33;
-            dataGridView1.Size = new Size(605, 336);
+            dataGridView1.Size = new Size(429, 206);
             dataGridView1.TabIndex = 2;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
@@ -85,7 +90,6 @@
             Column1.Name = "Column1";
             Column1.ReadOnly = true;
             Column1.SortMode = DataGridViewColumnSortMode.NotSortable;
-            Column1.Width = 150;
             // 
             // Column2
             // 
@@ -94,7 +98,6 @@
             Column2.Name = "Column2";
             Column2.ReadOnly = true;
             Column2.SortMode = DataGridViewColumnSortMode.NotSortable;
-            Column2.Width = 151;
             // 
             // Column3
             // 
@@ -103,7 +106,6 @@
             Column3.Name = "Column3";
             Column3.ReadOnly = true;
             Column3.SortMode = DataGridViewColumnSortMode.NotSortable;
-            Column3.Width = 150;
             // 
             // Column4
             // 
@@ -112,7 +114,6 @@
             Column4.Name = "Column4";
             Column4.ReadOnly = true;
             Column4.SortMode = DataGridViewColumnSortMode.NotSortable;
-            Column4.Width = 150;
             // 
             // panel1
             // 
@@ -120,17 +121,20 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(button1);
             panel1.Controls.Add(textBox1);
-            panel1.Location = new Point(6, 30);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(2, 18);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(605, 96);
+            panel1.Size = new Size(429, 65);
             panel1.TabIndex = 3;
             // 
             // button1
             // 
             button1.FlatStyle = FlatStyle.System;
-            button1.Location = new Point(193, 57);
+            button1.Location = new Point(134, 39);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
-            button1.Size = new Size(244, 34);
+            button1.Size = new Size(171, 20);
             button1.TabIndex = 1;
             button1.Text = "Подать цепочку автомату";
             button1.UseVisualStyleBackColor = true;
@@ -140,9 +144,11 @@
             // 
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.FlatStyle = FlatStyle.System;
-            groupBox1.Location = new Point(12, 150);
+            groupBox1.Location = new Point(8, 101);
+            groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(619, 376);
+            groupBox1.Padding = new Padding(2);
+            groupBox1.Size = new Size(433, 226);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Таблица переходов";
@@ -150,9 +156,11 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(panel1);
-            groupBox2.Location = new Point(12, 12);
+            groupBox2.Location = new Point(8, 7);
+            groupBox2.Margin = new Padding(2);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(619, 132);
+            groupBox2.Padding = new Padding(2);
+            groupBox2.Size = new Size(433, 85);
             groupBox2.TabIndex = 6;
             groupBox2.TabStop = false;
             groupBox2.Text = "ДКА принимает только 0 и 1";
@@ -160,9 +168,11 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(panel2);
-            groupBox3.Location = new Point(12, 532);
+            groupBox3.Location = new Point(8, 330);
+            groupBox3.Margin = new Padding(2);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(619, 110);
+            groupBox3.Padding = new Padding(2);
+            groupBox3.Size = new Size(433, 66);
             groupBox3.TabIndex = 7;
             groupBox3.TabStop = false;
             groupBox3.Text = "Текущее состояние ДКА";
@@ -172,17 +182,20 @@
             panel2.BackColor = Color.Gainsboro;
             panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(textBox2);
-            panel2.Location = new Point(6, 30);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(2, 18);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(605, 72);
+            panel2.Size = new Size(429, 46);
             panel2.TabIndex = 3;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(-1, 20);
+            textBox2.Location = new Point(-1, 12);
+            textBox2.Margin = new Padding(2);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
-            textBox2.Size = new Size(605, 31);
+            textBox2.Size = new Size(429, 23);
             textBox2.TabIndex = 0;
             textBox2.Text = "Ошибка! В цепочке обнаружены символы не из входного алфавита.";
             textBox2.TextAlign = HorizontalAlignment.Center;
@@ -194,13 +207,14 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(643, 651);
+            ClientSize = new Size(450, 400);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(2);
             MaximizeBox = false;
             Name = "Form1";
             Text = "ДКА - 9 вариант - 157об";
